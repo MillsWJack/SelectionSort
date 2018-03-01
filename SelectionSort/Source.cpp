@@ -49,19 +49,26 @@ void printList(const vector<int>& list)
 
 void selectionSort(vector<int>& list)
 {
+	int min = 0;
 	for(int j = 0; j < list.size(); j++)
 	{
-		for (int i = 0; i < list.size(); i++)
+		min = j;
+		for (int i = j + 1; i < list.size(); i++)
 		{
-			if (list[i] > list[j])
+			if (list[i] < list[min])
 			{
-				int temp = list[i];
-				list[i] = list[j];
-				list[j] = temp;
-
-				cout << "\n\t\t";
-				printList(list);
+				min = i;
 			}
+		}
+
+		if (min != j)
+		{
+			int temp = list[min];
+			list[min] = list[j];
+			list[j] = temp;
+
+			cout << "\n\t\t";
+			printList(list);
 		}
 	}
 }
